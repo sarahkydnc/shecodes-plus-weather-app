@@ -165,3 +165,8 @@ h2 {
   font-size: 14px;
   font-weight: lighter;
 }
+
+.clickthru-links {
+  color: #fd8021;
+  font-weight: bold;
+}

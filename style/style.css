@@ -1,0 +1,167 @@
+body {
+  font-family: "Heebo", sans-serif;
+}
+
+header {
+  text-align: center;
+  margin-top: 5px;
+}
+
+h1 {
+  color: #0466c8;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+form {
+  display: block;
+  margin: 0 auto;
+}
+
+section {
+  text-align: center;
+}
+
+h2 {
+  color: #0466c8;
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.container {
+  max-width: 500px;
+  background-color: #f8f9fa;
+  border: 1.5px solid #e1dee3;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 30px 40px;
+}
+
+.subtitle {
+  color: #637081;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+#current-location {
+  color: #7fc8f8;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#current-location:hover {
+  color: #fd8021;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.current-date {
+  color: #7fc8f8;
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.icon-current {
+  color: #637081;
+  font-size: 120px;
+}
+
+.current-condition {
+  color: #637081;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.current-temperature {
+  color: #0466c8;
+  font-size: 90px;
+  font-weight: 700;
+}
+
+#unit-celsius,
+#unit-fahrenheit {
+  color: #637081;
+}
+
+#unit-celsius:hover,
+#unit-fahrenheit:hover {
+  color: #fd8021;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.temperature-range {
+  color: #7fc8f8;
+  font-size: 22px;
+}
+
+.temperature-low {
+  text-align: right;
+}
+
+.temperature-high {
+  text-align: left;
+}
+
+.current-feel {
+  color: #637081;
+
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.current-peripherals {
+  color: #637081;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: lighter;
+  line-height: 1.25;
+}
+
+.forecast-day {
+  color: #637081;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.icon-forecast {
+  margin-top: 10px;
+  color: #637081;
+  font-size: 40px;
+}
+
+.forecast-high {
+  color: #0466c8;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.forecast-low {
+  color: #7fc8f8;
+  font-size: 18px;
+}
+
+.music-api {
+  margin-bottom: 5px;
+}
+
+.music-recommendation {
+  color: #637081;
+  font-size: 16px;
+  font-weight: lighter;
+  line-height: 1.75;
+}
+
+.coded-by {
+  text-align: center;
+  color: #637081;
+  font-size: 14px;
+  font-weight: lighter;
+}

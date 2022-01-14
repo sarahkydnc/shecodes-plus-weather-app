@@ -1,5 +1,6 @@
 body {
   font-family: "Heebo", sans-serif;
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
 header {
@@ -45,21 +46,6 @@ h2 {
   font-weight: normal;
 }
 
-#current-location {
-  color: #7fc8f8;
-  font-size: 14px;
-  font-style: italic;
-  line-height: 1.25;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-#current-location:hover {
-  color: #fd8021;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
 .current-date {
   color: #7fc8f8;
   font-size: 14px;
@@ -90,16 +76,16 @@ h2 {
   font-weight: 700;
 }
 
-#unit-celsius,
-#unit-fahrenheit {
-  color: #637081;
+.active {
+  color: #7fc8f8;
+  text-decoration: none;
+  cursor: default;
 }
 
-#unit-celsius:hover,
-#unit-fahrenheit:hover {
+.active:hover {
   color: #fd8021;
-  cursor: pointer;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .temperature-range {
@@ -174,4 +160,19 @@ h2 {
 .clickthru-links {
   color: #fd8021;
   font-weight: bold;
+}
+
+#current-location {
+  color: #7fc8f8;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#current-location:hover {
+  color: #fd8021;
+  cursor: pointer;
+  text-decoration: underline;
 }

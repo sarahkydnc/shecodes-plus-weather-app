@@ -66,70 +66,103 @@ function showWeather(response) {
   let currentIcon = response.data.weather[0].icon;
   icon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${currentIcon}@2x.png`
+    `https://openweathermap.org/img/wn/${currentIcon}@2x.png`
   );
   icon.setAttribute("alt", currentIcon);
 
   let condition = document.querySelector(".current-condition");
   condition.innerHTML = response.data.weather[0].description;
 
-  let roundedTemperature = Math.round(response.data.main.temp) + `°`;
   let temperature = document.querySelector(".current-temperature");
-  temperature.innerHTML = roundedTemperature;
+  celsiusTemperature = Math.round(response.data.main.temp);
+  temperature.innerHTML = `${celsiusTemperature}°`;
 
-  let roundedTempLow = Math.round(response.data.main.temp_min) + `°`;
   let tempLow = document.querySelector(".temperature-low");
-  tempLow.innerHTML = `Low: ${roundedTempLow}`;
+  celsiusTempLow = Math.round(response.data.main.temp_min);
+  tempLow.innerHTML = `Low: ${celsiusTempLow}°`;
 
-  let roundedTempHigh = Math.round(response.data.main.temp_max) + `°`;
   let tempHigh = document.querySelector(".temperature-high");
-  tempHigh.innerHTML = `High: ${roundedTempHigh}`;
+  celsiusTempHigh = Math.round(response.data.main.temp_max);
+  tempHigh.innerHTML = `High: ${celsiusTempHigh}°`;
 
-  let roundedFeelsLike = Math.round(response.data.main.feels_like) + `°`;
   let feelsLike = document.querySelector(".current-feel");
-  feelsLike.innerHTML = `Feels like ${roundedFeelsLike}`;
+  celsiusFeelsLike = Math.round(response.data.main.feels_like);
+  feelsLike.innerHTML = `Feels like ${celsiusFeelsLike}°`;
 
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 
-  let roundedWindSpeed = Math.round(response.data.wind.speed) + ` km/h`;
   let windSpeed = document.querySelector("#wind-speed");
-  windSpeed.innerHTML = `Wind speed: ${roundedWindSpeed}`;
+  metricWindSpeed = Math.round(response.data.wind.speed);
+  windSpeed.innerHTML = `Wind speed: ${metricWindSpeed} km/h`;
 
   let pressure = document.querySelector("#pressure");
   pressure.innerHTML = `Pressure: ${response.data.main.pressure} mb`;
-
-  // Metric-Imperial Conversion of Weather Stats
-  let metric = document.querySelector("#unit-celsius");
-  let imperial = document.querySelector("#unit-fahrenheit");
-
-  function convertImperial(event) {
-    event.preventDefault();
-    temperature.innerHTML =
-      Math.round(response.data.main.temp * 1.8 + 32) + `°`;
-    tempLow.innerHTML =
-      `Low: ` + Math.round(response.data.main.temp_min * 1.8 + 32) + `°`;
-    tempHigh.innerHTML =
-      `High: ` + Math.round(response.data.main.temp_max * 1.8 + 32) + `°`;
-    feelsLike.innerHTML =
-      `Feels like ` +
-      Math.round(response.data.main.feels_like * 1.8 + 32) +
-      `°`;
-    windSpeed.innerHTML =
-      `Wind speed: ` + Math.round(response.data.wind.speed / 1.609) + ` mph`;
-  }
-  imperial.addEventListener("click", convertImperial);
-
-  function convertMetric(event) {
-    event.preventDefault();
-    temperature.innerHTML = roundedTemperature;
-    tempLow.innerHTML = `Low: ${roundedTempLow}`;
-    tempHigh.innerHTML = `High: ${roundedTempHigh}`;
-    feelsLike.innerHTML = `Feels like ${roundedFeelsLike}`;
-    windSpeed.innerHTML = `Wind speed: ${roundedWindSpeed}`;
-  }
-  metric.addEventListener("click", convertMetric);
 }
+
+// Metric-Imperial Conversion of Weather Stats
+function convertImperial(event) {
+  event.preventDefault();
+
+  // Upon click, transfer the active class from convertMetric to convertImperial
+  metric.classList.remove("active");
+  imperial.classList.add("active");
+
+  let temperature = document.querySelector(".current-temperature");
+  let fahrenheitTemperature = Math.round(celsiusTemperature * 1.8 + 32);
+  temperature.innerHTML = `${fahrenheitTemperature}°`;
+
+  let tempLow = document.querySelector(".temperature-low");
+  let fahrenheitTempLow = Math.round(celsiusTempLow * 1.8 + 32);
+  tempLow.innerHTML = `Low: ${fahrenheitTempLow}°`;
+
+  let tempHigh = document.querySelector(".temperature-high");
+  let fahrenheitTempHigh = Math.round(celsiusTempHigh * 1.8 + 32);
+  tempHigh.innerHTML = `High: ${fahrenheitTempHigh}°`;
+
+  let feelsLike = document.querySelector(".current-feel");
+  let fahrenheitFeelsLike = Math.round(celsiusFeelsLike * 1.8 + 32);
+  feelsLike.innerHTML = `Feels like ${fahrenheitFeelsLike}°`;
+
+  let windSpeed = document.querySelector("#wind-speed");
+  let imperialWindSpeed = Math.round(metricWindSpeed / 1.609);
+  windSpeed.innerHTML = `Wind speed: ${imperialWindSpeed} mph`;
+}
+
+function convertMetric(event) {
+  event.preventDefault();
+
+  // Upon click, transfer the active class from convertImperial to convertMetric
+  imperial.classList.remove("active");
+  metric.classList.add("active");
+
+  let temperature = document.querySelector(".current-temperature");
+  temperature.innerHTML = `${celsiusTemperature}°`;
+
+  let tempLow = document.querySelector(".temperature-low");
+  tempLow.innerHTML = `Low: ${celsiusTempLow}°`;
+
+  let tempHigh = document.querySelector(".temperature-high");
+  tempHigh.innerHTML = `High: ${celsiusTempHigh}°`;
+
+  let feelsLike = document.querySelector(".current-feel");
+  feelsLike.innerHTML = `Feels like ${celsiusFeelsLike}°`;
+
+  let windSpeed = document.querySelector("#wind-speed");
+  windSpeed.innerHTML = `Wind speed: ${metricWindSpeed} km/h`;
+}
+
+let celsiusTemperature = null;
+let celsiusTempLow = null;
+let celsiusTempHigh = null;
+let celsiusFeelsLike = null;
+let metricWindSpeed = null;
+
+let imperial = document.querySelector("#unit-fahrenheit");
+imperial.addEventListener("click", convertImperial);
+
+let metric = document.querySelector("#unit-celsius");
+metric.addEventListener("click", convertMetric);
 
 // Find local weather via city declaration
 function searchCity(city) {

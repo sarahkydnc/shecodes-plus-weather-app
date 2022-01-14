@@ -72,6 +72,11 @@ h2 {
   font-size: 120px;
 }
 
+.weather-today img {
+  height: 128px;
+  width: 128px;
+}
+
 .current-condition {
   color: #637081;
   font-size: 18px;

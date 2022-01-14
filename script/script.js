@@ -62,6 +62,14 @@ function showWeather(response) {
   let city = document.querySelector(".current-city");
   city.innerHTML = response.data.name;
 
+  let icon = document.querySelector("#icon");
+  let currentIcon = response.data.weather[0].icon;
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${currentIcon}@2x.png`
+  );
+  icon.setAttribute("alt", currentIcon);
+
   let condition = document.querySelector(".current-condition");
   condition.innerHTML = response.data.weather[0].description;
 

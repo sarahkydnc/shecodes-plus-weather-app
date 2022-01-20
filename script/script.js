@@ -75,7 +75,7 @@ function showWeather(response) {
 
   let temperature = document.querySelector(".current-temperature");
   celsiusTemperature = Math.round(response.data.main.temp);
-  temperature.innerHTML = `${celsiusTemperature}°`;
+  temperature.innerHTML = `${celsiusTemperature}°C`;
 
   let tempLow = document.querySelector(".temperature-low");
   celsiusTempLow = Math.round(response.data.main.temp_min);
@@ -147,70 +147,6 @@ function getForecast(coordinates) {
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(displayForecast);
 }
-
-// Metric-Imperial Conversion of Weather Stats
-function convertImperial(event) {
-  event.preventDefault();
-
-  // Upon click, transfer the active class from convertMetric to convertImperial
-  metric.classList.remove("active");
-  imperial.classList.add("active");
-
-  let temperature = document.querySelector(".current-temperature");
-  let fahrenheitTemperature = Math.round(celsiusTemperature * 1.8 + 32);
-  temperature.innerHTML = `${fahrenheitTemperature}°`;
-
-  let tempLow = document.querySelector(".temperature-low");
-  let fahrenheitTempLow = Math.round(celsiusTempLow * 1.8 + 32);
-  tempLow.innerHTML = `Low: ${fahrenheitTempLow}°`;
-
-  let tempHigh = document.querySelector(".temperature-high");
-  let fahrenheitTempHigh = Math.round(celsiusTempHigh * 1.8 + 32);
-  tempHigh.innerHTML = `High: ${fahrenheitTempHigh}°`;
-
-  let feelsLike = document.querySelector(".current-feel");
-  let fahrenheitFeelsLike = Math.round(celsiusFeelsLike * 1.8 + 32);
-  feelsLike.innerHTML = `Feels like ${fahrenheitFeelsLike}°`;
-
-  let windSpeed = document.querySelector("#wind-speed");
-  let imperialWindSpeed = Math.round(metricWindSpeed / 1.609);
-  windSpeed.innerHTML = `Wind speed: ${imperialWindSpeed} mph`;
-}
-
-function convertMetric(event) {
-  event.preventDefault();
-
-  // Upon click, transfer the active class from convertImperial to convertMetric
-  imperial.classList.remove("active");
-  metric.classList.add("active");
-
-  let temperature = document.querySelector(".current-temperature");
-  temperature.innerHTML = `${celsiusTemperature}°`;
-
-  let tempLow = document.querySelector(".temperature-low");
-  tempLow.innerHTML = `Low: ${celsiusTempLow}°`;
-
-  let tempHigh = document.querySelector(".temperature-high");
-  tempHigh.innerHTML = `High: ${celsiusTempHigh}°`;
-
-  let feelsLike = document.querySelector(".current-feel");
-  feelsLike.innerHTML = `Feels like ${celsiusFeelsLike}°`;
-
-  let windSpeed = document.querySelector("#wind-speed");
-  windSpeed.innerHTML = `Wind speed: ${metricWindSpeed} km/h`;
-}
-
-let celsiusTemperature = null;
-let celsiusTempLow = null;
-let celsiusTempHigh = null;
-let celsiusFeelsLike = null;
-let metricWindSpeed = null;
-
-let imperial = document.querySelector("#unit-fahrenheit");
-imperial.addEventListener("click", convertImperial);
-
-let metric = document.querySelector("#unit-celsius");
-metric.addEventListener("click", convertMetric);
 
 // Find local weather via city declaration
 function searchCity(city) {

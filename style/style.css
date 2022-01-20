@@ -53,11 +53,6 @@ h2 {
   text-transform: uppercase;
 }
 
-.icon-current {
-  color: #637081;
-  font-size: 120px;
-}
-
 .weather-today img {
   height: 128px;
   width: 128px;
@@ -74,18 +69,6 @@ h2 {
   color: #0466c8;
   font-size: 90px;
   font-weight: 700;
-}
-
-.active {
-  color: #7fc8f8;
-  text-decoration: none;
-  cursor: default;
-}
-
-.active:hover {
-  color: #fd8021;
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 .temperature-range {
@@ -120,12 +103,6 @@ h2 {
   color: #637081;
   font-size: 20px;
   font-weight: bold;
-}
-
-.icon-forecast {
-  margin-top: 10px;
-  color: #637081;
-  font-size: 40px;
 }
 
 .forecast-tempmax {

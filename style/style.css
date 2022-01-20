@@ -53,6 +53,10 @@ h2 {
   text-transform: uppercase;
 }
 
+.weather-today {
+  margin-top: -10px;
+}
+
 .weather-today img {
   height: 175px;
   width: 175px;

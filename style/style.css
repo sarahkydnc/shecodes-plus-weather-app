@@ -32,7 +32,7 @@ h2 {
 
 .container {
   max-width: 500px;
-  background-color: #f8f9fa;
+  background-color: #fff;
   border: 1.5px solid #e1dee3;
   border-radius: 5px;
   margin-top: 20px;
@@ -54,8 +54,8 @@ h2 {
 }
 
 .weather-today img {
-  height: 128px;
-  width: 128px;
+  height: 175px;
+  width: 175px;
 }
 
 .current-condition {
@@ -150,4 +150,9 @@ h2 {
   color: #fd8021;
   cursor: pointer;
   text-decoration: underline;
+}
+
+#icon {
+  margin-top: -45px;
+  margin-bottom: -35px;
 }

@@ -98,6 +98,54 @@ function showWeather(response) {
 
   let pressure = document.querySelector("#pressure");
   pressure.innerHTML = `Pressure: ${response.data.main.pressure} mb`;
+
+  getForecast(response.data.coord);
+}
+
+// Formatting forecast days of the week
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  return days[day];
+}
+
+// Return 5-day weather forecast
+function displayForecast(response) {
+  let forecast = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let forecastDaily = response.data.daily;
+
+  forecastDaily.forEach(function(forecastDay, index) {
+    if (index < 6) {
+      forecastHTML = forecastHTML +
+      `
+        <div class="col-2">
+          <div class="forecast-day">${formatDay(forecastDay.dt)}</div> 
+            <img 
+              src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
+              alt="" 
+              width="48"
+            />
+          <div class="forecast-temprange">
+            <span class="forecast-tempmax">${Math.round(forecastDay.temp.max)}°</span>
+            <span class="forecast-tempmin">${Math.round(forecastDay.temp.min)}°</span>
+          </div>
+        </div>
+      `;
+    }
+  })
+  
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
+
+// Forecast's coordinates retrieval and processing
+function getForecast(coordinates) {
+  let apiKey = `7847c8cdbdd3f4d4e829321a937f5c42`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(displayForecast);
 }
 
 // Metric-Imperial Conversion of Weather Stats

@@ -128,15 +128,13 @@ h2 {
   font-size: 40px;
 }
 
-.forecast-high {
+.forecast-tempmax {
   color: #0466c8;
-  font-size: 22px;
   font-weight: bold;
 }
 
-.forecast-low {
+.forecast-tempmin {
   color: #7fc8f8;
-  font-size: 18px;
 }
 
 .music-api {

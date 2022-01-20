@@ -74,32 +74,33 @@ function showWeather(response) {
   condition.innerHTML = response.data.weather[0].description;
 
   let temperature = document.querySelector(".current-temperature");
-  celsiusTemperature = Math.round(response.data.main.temp);
-  temperature.innerHTML = `${celsiusTemperature}°C`;
+  roundedTemperature = Math.round(response.data.main.temp);
+  temperature.innerHTML = `${roundedTemperature}°C`;
 
   let tempLow = document.querySelector(".temperature-low");
-  celsiusTempLow = Math.round(response.data.main.temp_min);
-  tempLow.innerHTML = `Low: ${celsiusTempLow}°`;
+  roundedTempLow = Math.round(response.data.main.temp_min);
+  tempLow.innerHTML = `Low: ${roundedTempLow}°`;
 
   let tempHigh = document.querySelector(".temperature-high");
-  celsiusTempHigh = Math.round(response.data.main.temp_max);
-  tempHigh.innerHTML = `High: ${celsiusTempHigh}°`;
+  roundedTempHigh = Math.round(response.data.main.temp_max);
+  tempHigh.innerHTML = `High: ${roundedTempHigh}°`;
 
   let feelsLike = document.querySelector(".current-feel");
-  celsiusFeelsLike = Math.round(response.data.main.feels_like);
-  feelsLike.innerHTML = `Feels like ${celsiusFeelsLike}°`;
+  roundedFeelsLike = Math.round(response.data.main.feels_like);
+  feelsLike.innerHTML = `Feels like ${roundedFeelsLike}°`;
 
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 
   let windSpeed = document.querySelector("#wind-speed");
-  metricWindSpeed = Math.round(response.data.wind.speed);
-  windSpeed.innerHTML = `Wind speed: ${metricWindSpeed} km/h`;
+  roundedWindSpeed = Math.round(response.data.wind.speed);
+  windSpeed.innerHTML = `Wind speed: ${roundedWindSpeed} km/h`;
 
   let pressure = document.querySelector("#pressure");
   pressure.innerHTML = `Pressure: ${response.data.main.pressure} mb`;
 
   getForecast(response.data.coord);
+  getMusic(response.data.main.temp);
 }
 
 // Formatting forecast days of the week
@@ -114,12 +115,12 @@ function formatDay(timestamp) {
 // Return 5-day weather forecast
 function displayForecast(response) {
   let forecast = document.querySelector("#forecast");
-  let forecastHTML = `<div class="row">`;
+  let musicHTML = `<div class="row">`;
   let forecastDaily = response.data.daily;
 
   forecastDaily.forEach(function(forecastDay, index) {
     if (index < 6) {
-      forecastHTML = forecastHTML +
+      musicHTML = musicHTML +
       `
         <div class="col-2">
           <div class="forecast-day">${formatDay(forecastDay.dt)}</div> 
@@ -137,8 +138,8 @@ function displayForecast(response) {
     }
   })
   
-  forecastHTML = forecastHTML + `</div>`;
-  forecast.innerHTML = forecastHTML;
+  musicHTML = musicHTML + `</div>`;
+  forecast.innerHTML = musicHTML;
 }
 
 // Forecast's coordinates retrieval and processing
@@ -146,6 +147,86 @@ function getForecast(coordinates) {
   let apiKey = `7847c8cdbdd3f4d4e829321a937f5c42`;
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(displayForecast);
+}
+
+// Spotify music recommendation, based on current weather
+function displayMusic(response) {
+  let spotify = document.querySelector(".spotify");
+  let musicHTML = `<div class="row">`;
+  let currentTemp = Math.round(response.data.main.temp);
+
+  if (currentTemp < 11) {
+    musicHTML = musicHTML +
+    `
+      <p class="music-greeting">
+        Weather's getting a lil chilly?
+      <br />
+      <span style="color: #0466c8; font-size: 20px; font-weight: bold">
+        Here's some cozy tunes to get you going. 😌🎧
+      </span>
+      </p>
+      <iframe
+        src="https://open.spotify.com/embed/playlist/37i9dQZF1DXa8axQnFlj0R?utm_source=generator"
+        width="100%"
+        height="80"
+        frameborder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      </iframe>
+  `;
+  } else {
+    if (currentTemp > 30) {
+    musicHTML = musicHTML +
+    `
+      <p class="music-greeting">
+        Sun's out fun's out!
+      <br />
+      <span style="color: #0466c8; font-size: 20px; font-weight: bold">
+        Groove along to these vibey beats. 😎🎧
+      </span>
+      </p>
+      <iframe
+        src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1gRalH1mWrP?utm_source=generator&theme=0"
+        width="100%"
+        height="80"
+        frameBorder="0" 
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      </iframe>
+    `;
+    } else {
+      musicHTML = musicHTML +
+      `
+        <p class="music-greeting">
+          Weather seems fine alright!
+        <br />
+        <span style="color: #0466c8; font-size: 20px; font-weight: bold">
+          Enjoy you day with these tasty tracks. 🙂🎧
+        </span>
+        </p>
+        <iframe 
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9XIFQuFvzM4?utm_source=generator&theme=0" 
+          width="100%" 
+          height="80" 
+          frameBorder="0" 
+          allowfullscreen="" 
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
+      `;
+
+    }
+  }
+  musicHTML = musicHTML + `</div>`;
+  spotify.innerHTML = musicHTML;
+}
+
+// Music player's local temperature retrieval
+function getMusic(temperature) {
+  let weatherAPIKey = "7847c8cdbdd3f4d4e829321a937f5c42";
+  let cityAPIEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+  let cityAPIUrl = `${cityAPIEndpoint}?q=${temperature}&appid=${weatherAPIKey}&units=metric`;
+
+  axios.get(`${cityAPIUrl}`).then(displayMusic);
 }
 
 // Find local weather via city declaration

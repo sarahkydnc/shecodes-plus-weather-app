@@ -235,7 +235,10 @@ function searchCity(city) {
   let cityAPIEndpoint = "https://api.openweathermap.org/data/2.5/weather";
   let cityAPIUrl = `${cityAPIEndpoint}?q=${city}&appid=${weatherAPIKey}&units=metric`;
 
-  axios.get(`${cityAPIUrl}`).then(showWeather);
+  axios.get(cityAPIUrl).then(showWeather);
+  axios.get(cityAPIUrl).then(showWeather).catch(function (error) {
+      alert("Whoopsey-daisy! That city doesn't exist... 😟");
+    });
 }
 
 // Find local weather via location tracking

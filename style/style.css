@@ -1,6 +1,6 @@
 body {
   font-family: "Heebo", sans-serif;
-  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  background: #d9faff;
 }
 
 header {
@@ -9,7 +9,7 @@ header {
 }
 
 h1 {
-  color: #0466c8;
+  color: #fd5f00;
   font-size: 40px;
   font-weight: 800;
 }
@@ -24,16 +24,20 @@ section {
 }
 
 h2 {
-  color: #0466c8;
+  color: #fd5f00;
   font-size: 32px;
   font-weight: 700;
   text-transform: uppercase;
 }
 
+hr {
+  color: #fd5f00;
+}
+
 .container {
   max-width: 500px;
-  background-color: #fff;
-  border: 1.5px solid #e1dee3;
+  background-color: #00204a;
+  border: 1.5px solid #fd5f00;
   border-radius: 5px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -41,13 +45,13 @@ h2 {
 }
 
 .subtitle {
-  color: #637081;
+  color: #d9faff;
   font-size: 20px;
   font-weight: normal;
 }
 
 .current-date {
-  color: #7fc8f8;
+  color: #05BBF0;
   font-size: 14px;
   font-weight: normal;
   text-transform: uppercase;
@@ -63,20 +67,20 @@ h2 {
 }
 
 .current-condition {
-  color: #637081;
+  color: #d9faff;
   font-size: 18px;
   font-weight: bold;
   text-transform: capitalize;
 }
 
 .current-temperature {
-  color: #0466c8;
+  color: #fd5f00;
   font-size: 90px;
   font-weight: 700;
 }
 
 .temperature-range {
-  color: #7fc8f8;
+  color: #05BBF0;
   font-size: 22px;
   margin-top: -85px;
   margin-bottom: -65px;
@@ -89,7 +93,7 @@ h2 {
 }
 
 .current-feel {
-  color: #637081;
+  color: #d9faff;
   font-size: 24px;
   font-weight: bold;
 }
@@ -101,19 +105,19 @@ h2 {
 }
 
 .forecast-day {
-  color: #637081;
+  color: #d9faff;
   font-size: 20px;
   font-weight: bold;
 }
 
 .forecast-tempmax {
-  color: #0466c8;
+  color: #fd5f00;
   font-size: 12px;
   font-weight: bold;
 }
 
 .forecast-tempmin {
-  color: #7fc8f8;
+  color: #05BBF0;
   font-size: 12px;
 }
 
@@ -122,7 +126,7 @@ h2 {
 }
 
 .music-greeting {
-  color: #637081;
+  color: #d9faff;
   font-size: 16px;
   font-weight: lighter;
   line-height: 1.75;
@@ -130,18 +134,18 @@ h2 {
 
 .coded-by {
   text-align: center;
-  color: #637081;
+  color: #d9faff;
   font-size: 12px;
   font-weight: lighter;
 }
 
 .clickthru-links {
-  color: #fd8021;
+  color: #fd5f00;
   font-weight: bold;
 }
 
 #current-location {
-  color: #7fc8f8;
+  color: #05BBF0;
   font-size: 14px;
   font-style: italic;
   line-height: 1.25;
@@ -150,7 +154,7 @@ h2 {
 }
 
 #current-location:hover {
-  color: #fd8021;
+  color: #fd5f00;
   cursor: pointer;
   text-decoration: underline;
 }
@@ -174,7 +178,7 @@ h2 {
 #humidity, #wind-speed, #pressure {
   display: inline;
   margin-left: -10px;
-  color: #637081;
+  color: #d9faff;
   font-size: 16px;
   font-weight: lighter;
 }

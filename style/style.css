@@ -74,19 +74,18 @@ h2 {
 .temperature-range {
   color: #7fc8f8;
   font-size: 22px;
+  margin-top: -65px;
+  margin-bottom: -65px;
+  margin-right: 10px;
 }
 
-.temperature-low {
-  text-align: right;
-}
-
-.temperature-high {
-  text-align: left;
+.temperature-range .low-data, .high-data {
+  display: inline;
+  margin-left: -10px;
 }
 
 .current-feel {
   color: #637081;
-
   font-size: 24px;
   font-weight: bold;
 }
@@ -107,11 +106,13 @@ h2 {
 
 .forecast-tempmax {
   color: #0466c8;
+  font-size: 12px;
   font-weight: bold;
 }
 
 .forecast-tempmin {
   color: #7fc8f8;
+  font-size: 12px;
 }
 
 .music-api {
@@ -155,4 +156,10 @@ h2 {
 #icon {
   margin-top: -15px;
   margin-bottom: -35px;
+}
+
+#range-icon {
+  display: inline;
+  width: 72px;
+  vertical-align: middle;
 }

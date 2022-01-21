@@ -77,13 +77,13 @@ function showWeather(response) {
   roundedTemperature = Math.round(response.data.main.temp);
   temperature.innerHTML = `${roundedTemperature}°C`;
 
-  let tempLow = document.querySelector(".temperature-low");
+  let tempLow = document.querySelector(".low-data");
   roundedTempLow = Math.round(response.data.main.temp_min);
-  tempLow.innerHTML = `Low: ${roundedTempLow}°`;
+  tempLow.innerHTML = `${roundedTempLow}°`;
 
-  let tempHigh = document.querySelector(".temperature-high");
+  let tempHigh = document.querySelector(".high-data");
   roundedTempHigh = Math.round(response.data.main.temp_max);
-  tempHigh.innerHTML = `High: ${roundedTempHigh}°`;
+  tempHigh.innerHTML = `${roundedTempHigh}°`;
 
   let feelsLike = document.querySelector(".current-feel");
   roundedFeelsLike = Math.round(response.data.main.feels_like);

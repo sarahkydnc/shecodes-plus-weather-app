@@ -67,6 +67,7 @@ hr {
 }
 
 .current-condition {
+  margin-top: 30px;
   color: #d9faff;
   font-size: 18px;
   font-weight: bold;

@@ -66,7 +66,7 @@ function showWeather(response) {
   let currentIcon = response.data.weather[0].icon;
   icon.setAttribute(
     "src",
-    `https://openweathermap.org/img/wn/${currentIcon}@2x.png`
+    `media/icons/${currentIcon}.svg`
   );
   icon.setAttribute("alt", currentIcon);
 
@@ -115,17 +115,17 @@ function formatDay(timestamp) {
 // Return 5-day weather forecast
 function displayForecast(response) {
   let forecast = document.querySelector("#forecast");
-  let musicHTML = `<div class="row">`;
+  let forecastHTML = `<div class="row">`;
   let forecastDaily = response.data.daily;
 
   forecastDaily.forEach(function(forecastDay, index) {
     if (index < 6) {
-      musicHTML = musicHTML +
+      forecastHTML = forecastHTML +
       `
         <div class="col-2">
           <div class="forecast-day">${formatDay(forecastDay.dt)}</div> 
             <img 
-              src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
+              src="media/icons/${forecastDay.weather[0].icon}.svg" 
               alt="" 
               width="48"
             />
@@ -138,8 +138,8 @@ function displayForecast(response) {
     }
   })
   
-  musicHTML = musicHTML + `</div>`;
-  forecast.innerHTML = musicHTML;
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
 }
 
 // Forecast's coordinates retrieval and processing

@@ -90,14 +90,14 @@ function showWeather(response) {
   feelsLike.innerHTML = `Feels like ${roundedFeelsLike}°`;
 
   let humidity = document.querySelector("#humidity");
-  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  humidity.innerHTML = `${response.data.main.humidity}%`;
 
   let windSpeed = document.querySelector("#wind-speed");
   roundedWindSpeed = Math.round(response.data.wind.speed);
-  windSpeed.innerHTML = `Wind speed: ${roundedWindSpeed} km/h`;
+  windSpeed.innerHTML = `${roundedWindSpeed} km/h`;
 
   let pressure = document.querySelector("#pressure");
-  pressure.innerHTML = `Pressure: ${response.data.main.pressure} mb`;
+  pressure.innerHTML = `${response.data.main.pressure} mb`;
 
   getForecast(response.data.coord);
   getMusic(response.data.main.temp);

@@ -53,6 +53,10 @@ h2 {
   text-transform: uppercase;
 }
 
+.weather-today {
+  margin-bottom: -50px;
+}
+
 .weather-today img {
   height: 175px;
   width: 175px;
@@ -74,7 +78,7 @@ h2 {
 .temperature-range {
   color: #7fc8f8;
   font-size: 22px;
-  margin-top: -65px;
+  margin-top: -85px;
   margin-bottom: -65px;
   margin-right: 10px;
 }
@@ -91,11 +95,9 @@ h2 {
 }
 
 .current-peripherals {
-  color: #637081;
-  font-size: 16px;
-  font-style: italic;
-  font-weight: lighter;
-  line-height: 1.25;
+  height:10px;
+  margin-top: -90px;
+  margin-right: 30px;
 }
 
 .forecast-day {
@@ -162,4 +164,17 @@ h2 {
   display: inline;
   width: 72px;
   vertical-align: middle;
+}
+
+#peripheral-icon {
+  display: inline;
+  width: 55px;
+}
+
+#humidity, #wind-speed, #pressure {
+  display: inline;
+  margin-left: -10px;
+  color: #637081;
+  font-size: 16px;
+  font-weight: lighter;
 }

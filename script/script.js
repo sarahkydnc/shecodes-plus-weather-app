@@ -100,7 +100,6 @@ function showWeather(response) {
   pressure.innerHTML = `${response.data.main.pressure} mb`;
 
   getForecast(response.data.coord);
-  getMusic(response.data.main.temp);
 }
 
 // Formatting forecast days of the week
@@ -150,84 +149,7 @@ function getForecast(coordinates) {
 }
 
 // Spotify music recommendation, based on current weather
-function displayMusic(response) {
-  let spotify = document.querySelector(".spotify");
-  let musicHTML = `<div class="row">`;
-  let currentTemp = Math.round(response.data.main.temp);
 
-  if (currentTemp < 11) {
-    musicHTML = musicHTML +
-    `
-      <p class="music-greeting">
-        Weather's getting a lil chilly?
-      <br />
-      <span style="color: #0466c8; font-size: 20px; font-weight: bold">
-        Here's some cozy tunes to get you going. 😌🎧
-      </span>
-      </p>
-      <iframe
-        src="https://open.spotify.com/embed/playlist/37i9dQZF1DXa8axQnFlj0R?utm_source=generator"
-        width="100%"
-        height="80"
-        frameborder="0"
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-      </iframe>
-  `;
-  } else {
-    if (currentTemp > 30) {
-    musicHTML = musicHTML +
-    `
-      <p class="music-greeting">
-        Sun's out fun's out!
-      <br />
-      <span style="color: #0466c8; font-size: 20px; font-weight: bold">
-        Groove along to these vibey beats. 😎🎧
-      </span>
-      </p>
-      <iframe
-        src="https://open.spotify.com/embed/playlist/37i9dQZF1DX1gRalH1mWrP?utm_source=generator&theme=0"
-        width="100%"
-        height="80"
-        frameBorder="0" 
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-      </iframe>
-    `;
-    } else {
-      musicHTML = musicHTML +
-      `
-        <p class="music-greeting">
-          Weather seems fine alright!
-        <br />
-        <span style="color: #0466c8; font-size: 20px; font-weight: bold">
-          Enjoy you day with these tasty tracks. 🙂🎧
-        </span>
-        </p>
-        <iframe 
-          src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9XIFQuFvzM4?utm_source=generator&theme=0" 
-          width="100%" 
-          height="80" 
-          frameBorder="0" 
-          allowfullscreen="" 
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-        </iframe>
-      `;
-
-    }
-  }
-  musicHTML = musicHTML + `</div>`;
-  spotify.innerHTML = musicHTML;
-}
-
-// Music player's local temperature retrieval
-function getMusic(temperature) {
-  let weatherAPIKey = "7847c8cdbdd3f4d4e829321a937f5c42";
-  let cityAPIEndpoint = "https://api.openweathermap.org/data/2.5/weather";
-  let cityAPIUrl = `${cityAPIEndpoint}?q=${temperature}&appid=${weatherAPIKey}&units=metric`;
-
-  axios.get(`${cityAPIUrl}`).then(displayMusic);
-}
 
 // Find local weather via city declaration
 function searchCity(city) {

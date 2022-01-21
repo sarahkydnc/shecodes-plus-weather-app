@@ -122,15 +122,17 @@ hr {
   font-size: 12px;
 }
 
-.music-api {
+.spotify-api {
+  margin-top: 25px;
   margin-bottom: 5px;
 }
 
 .music-greeting {
-  color: #d9faff;
-  font-size: 16px;
-  font-weight: lighter;
-  line-height: 1.75;
+  margin-bottom: 25px;
+  color: #05BBF0; 
+  font-size: 16px; 
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .coded-by {
@@ -157,7 +159,7 @@ hr {
 #current-location:hover {
   color: #fd5f00;
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 #icon {
